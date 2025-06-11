@@ -1,16 +1,15 @@
 ---
-
+import FeaturedArticle from '../components/FeaturedArticle.astro';
+import NewArticles from '../components/NewArticles.astro';
+import PopularArticles from '../components/PopularArticles.astro';
+import PrimaryLayout from '../layouts/PrimaryLayout.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<PrimaryLayout title="FEM - News Homepage">
+	<div class="three-columns mbe-xl">
+		<FeaturedArticle class="span-2"/>
+		<NewArticles />
+	</div>
+
+	<PopularArticles class="three-columns mbe-xl" />
+</PrimaryLayout>

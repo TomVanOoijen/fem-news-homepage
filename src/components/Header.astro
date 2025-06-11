@@ -1,0 +1,129 @@
+<script>
+    const navToggle = document.querySelector('[aria-controls="primary-nav"]');
+    
+    navToggle?.addEventListener('click', () => {
+        const navOpened = navToggle.getAttribute('aria-expanded');
+        
+        if(navOpened === 'false') {
+            navToggle.setAttribute("aria-expanded", 'true')
+        } else {
+            navToggle.setAttribute("aria-expanded", 'false')
+        }
+    })
+</script>
+
+<header>
+    <h1 class="visually-hidden">The W.</h1>
+    <a href="/" class="logo">
+        <img src="../../public/images/logo.svg" alt="" />
+    </a>
+
+    <button aria-controls="primary-nav" aria-expanded="false">
+        <span class="visually-hidden">Menu</span>
+        <img class="icon-hamburger" src="../../public/images/icon-menu.svg" alt="" />
+        <img class="icon-close" src="../../public/images/icon-menu-close.svg" alt="" />
+        
+    </button>
+
+    <nav id="primary-nav">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="#">New</a></li>
+            <li><a href="#">Popular</a></li>
+            <li><a href="#">Trending</a></li>
+            <li><a href="#">Categories</a></li>
+        </ul>
+    </nav>
+</header>
+
+<style lang="scss">
+    @import '../styles/mixins';
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-block: clamp(1.5rem, 5vmax, 5rem) clamp(1.5rem, 5vmax, 2rem);
+    }
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        gap: 1rem;
+    }
+
+    a {
+        text-decoration: none;
+        color: currentColor;
+
+        @include hocus {
+            color: var(--clr-accent-400);
+        }
+    }
+
+    button {
+        display: none;
+        padding: 1rem;
+        background: transparent;
+        border: none;
+        cursor: pointer
+    }
+
+    @media (width <  768px) {
+        button { 
+            display: block;
+            position: absolute;
+            z-index: 10;
+            right: 1rem;
+
+            .icon-close {
+                display: none;
+            }
+        }
+        
+        nav {
+            display: none;
+            position: absolute;
+            inset: 0;
+            height: 100dvh;
+            background-color: var(--clr-neutral-100);
+            top: 0;
+            right: 0;
+            width: 80%;
+            margin-left: auto;
+            box-shadow: 0 0 0 100vmax hsl(0 0 0 / 0.3);
+
+            ul {
+                display: grid;
+                gap: 2rem;
+                font-size: var(--fs-500);
+                margin-top: 25vh;
+                margin-left: 3rem;
+            }
+            
+            a {
+                color: var(--clr-neutral-900);
+                font-weight: var(--fw-semi-bold);
+
+                @include hocus {
+                    color: var(--clr-accent-400);
+                }
+            }
+        }
+
+        [aria-expanded="true"] {
+            .icon-hamburger {
+                display: none;
+            }
+
+            .icon-close {
+                display: block;
+            }
+        }
+
+        [aria-expanded="true"] + nav {
+            display: block;
+        }
+    }
+</style>
