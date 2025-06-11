@@ -6,7 +6,7 @@ I followed a guide in building the CSS, but put my own spin on this and rewrote 
 
 So I built this challenge using Astro and wrote in HTML (Astro templating logic in it), SCSS and Javascript.
 
-Check live URL: https://random-countries-brown.vercel.app
+Check live URL: https://fem-news-homepage-blue.vercel.app/
 
 ## Installation
 
@@ -14,6 +14,10 @@ Clone project and install dependencies
 
 ```
 npm i
+```
+
+```
+nvm use
 ```
 
 Run local development server
